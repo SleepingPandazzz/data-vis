@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <title>House Price Trends</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body onload="initSvg()">
+    <div class="section" id="section-1" data-label="Intro">
+      <div class="section-header">
+        <h1>Trend Analysis of US Counties Median House Prices</h1>
+        <p>Demonstrates trends in each county's median house price from August 2017 to May 2022</p>
+      </div>
+    </div>
+    <div class="section" id="section-2" data-label="Chart Graph">
+      <div class="box" style="max-width: 500px; left: 50%; top: 50%;">
+        Each year, the price of housing in the United States fluctuates, but overall, it rises; in 2022, in particular, house prices have been rising at an exceptional rate.
+      </div>
+      <div style="padding: 30px 10px 10px 10px;">
+        <svg id="chart-svg"></svg>
+      </div>
+    </div>
+    <div class="section" id="section-3" data-label="Map">
+      <div style="padding: 30px 10px 10px 10px;">
+        <div class="box arrow-right">
+          Click the "Play" button to start exploring the housing price trends
+        </div>
+        <div style="display: inline-block;">
+          <button id="play-btn" onclick="playTrace()">Click to Play</button>
+          <input id="date" class="slider" type="range" min="0" max="57" value="0">
+          <span id="current-date"></span>
+        </div>
+      </div>
+      <div id="tooltip" class="hidden">
+        <table>
+          <thead>
+            <tr>
+              <td colSpan="2">
+                <strong id="headcounty"></strong>
+              </td>
+            </tr>
+          </thead>
+          <tbody id="tooltip-body">
+          </tbody>
+        </table>
+      </div>
+      <div id="svgs">
+        <div class="left">
+          <svg id="map-svg"></svg>
+        </div>
+        <div class="right">
+          <div class="box arrow-bottom" style="margin-bottom: 40px;">
+            Each number represents the proportion of counties within the price range.
+          </div>
+          <svg id="pie-svg"></svg>
+          <div id="color-display">
+            <div class="color-container">
+              <div class="color-box" style="background-color: #69b764;" data-label="map"></div><span>< 300K</span>
+            </div>
+            <div class="color-container">
+              <div class="color-box" style="background-color: #ffd94a;" data-label="pie-chart"></div><span>300K ~ 500K</span>
+            </div>
+            <div class="color-container">
+              <div class="color-box" style="background-color: #f26c64;"></div><span>> 800K</span>
+            </div>
+          </div>
+          <div class="box arrow-top">
+            Each color represents a different pricing range.
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="section" id="contact" data-label="Get In Touch">Get In Touch</div> -->
+    <div class="section" id="section-4" data-label="Reference">
+      <div style="padding: 50px 20px;">
+        <h1 style="margin: 0;">References</h1>
+        <ul>
+          <li><a href="https://www.realtor.com/research/data/">Datasets: Realtor Real Estate Data</a></li>
+          <li>
+            Images: 
+            <div style="padding: 0 20px;">
+              <p><a href="https://www.pexels.com/photo/decorative-cardboard-illustration-of-house-with-banknote-on-olive-background-5849586/">Pixels Decorative Cardboard Illustration Of House With Banknote On Olive Background - Monstera</a></p>
+              <p><a href="https://www.pexels.com/photo/three-pink-green-and-yellow-houses-2904142/">Pixels Three Pink Green And Yellow Houses - Jeffrey Czum</a></p>
+              <p><a href="https://www.pexels.com/photo/white-shabby-concrete-wall-with-cracked-stucco-3968175/">Pixels White Shabby Concrete Wall With Cracked Stucco - Tatiana Syrikova</a></p>
+              <p><a href="https://www.pexels.com/photo/plain-plaster-wall-as-background-4287012/">Pixels Plain Plaster Wall As Background</a></p>
+            </div>
+          </li>
+          <li><a href="https://codepen.io/dcode-software/pen/PombjJy">Nav Style</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  
+  <script src="nav_style.js"></script>
+  <script src="visualization.js"></script>
+  <script src="chart_visualization.js"></script>
+</html>
+
+<script>
+  function initSvg() {
+    initMap(201708);
+    initChart();
+  }
+</script>
