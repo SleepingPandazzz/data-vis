@@ -4,7 +4,7 @@ let hotness_by_date;
 let max_price;
 let color;
 let color_range = ['#69b764', '#ffd94a', 'pink', '#f26c64'];
-let hotness;
+// let hotness;
 let grouped_hotness;
 
 const date_arr = [
@@ -69,16 +69,11 @@ const date_arr = [
 ]
 
 async function initMap(date) {
-  hotness = await d3.csv("/hotness.csv");
-  const counties = await d3.json("/counties-albers-10m.json");
+  // hotness = await d3.csv("/hotness.csv");
+  const counties = await d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-albers-10m.json");
+  // const counties = await d3.json("/counties-albers-10m.json");
   counties_topojson = topojson.feature(counties, counties.objects.counties);
-  // states_topjson = topojson.feature(counties, counties.objects.states);
   grouped_hotness = groupHotnessByDate(hotness);
-
-  // color = d3.scaleThreshold().domain([200000, 300000, 400000, 600000, 1000000])
-  //                            .range(['#f3e0c2', '#f0c294', '#fd8938', '#d74401', '#9c0824', '#2e0000']);
-  // color = d3.scaleThreshold().domain([400000, 800000, 1000000])
-  //                            .range(['#dbdb8d', '#ffd94a', '#ff7f0f', '#b85a0d']);
 
   color = d3.scaleThreshold().domain([300000, 500000, 800000])
                              .range(color_range);
@@ -124,7 +119,6 @@ function render(date) {
               .style("left", d.clientX + "px")
               .style("top", d.clientY + "px");
 
-        // tooltip.select('#headcounty').text(data.county_name)
         let county_row = '<tr><td>County: </td><td>' + capitialize(data.county_name.split(', ')[0]) + '</td></tr>';
         let state_row = '<tr><td>State: </td><td>' + (data.county_name.split(', ')[1]).toUpperCase() + '</td></tr>';
         let price_row = '<tr><td>Median Price: </td><td>' + moneyFormat(data.median_listing_price) + '</td></tr>';
