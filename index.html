@@ -16,6 +16,8 @@
     <div class="section" id="section-2" data-label="Chart Graph">
       <div class="box" style="max-width: 500px; left: 50%; top: 50%;">
         Each year, the price of housing in the United States fluctuates, but overall, it rises; in 2022, in particular, house prices have been rising at an exceptional rate.
+        <br/>
+        <button id="scroll-down-btn">Scroll down to see more details</button>
       </div>
       <div style="padding: 30px 10px 10px 10px;">
         <svg id="chart-svg"></svg>
@@ -50,6 +52,18 @@
           <svg id="map-svg"></svg>
         </div>
         <div class="right">
+          <table id="info-table">
+            <tr>
+              <th style="min-width: 80px">County</th>
+              <th style="min-width: 60px">State</th>
+              <th style="min-width: 100px;">Median Price</th>
+            </tr>
+            <tr>
+              <td id="county-info"></td>
+              <td id="state-info"></td>
+              <td id="price-info"></td>
+            </tr>
+          </table>
           <div class="box arrow-bottom" style="margin-bottom: 40px;">
             Each number represents the proportion of counties within the price range.
           </div>
@@ -74,7 +88,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="section" id="contact" data-label="Get In Touch">Get In Touch</div> -->
     <div class="section" id="section-4" data-label="Reference">
       <div style="padding: 50px 20px;">
         <h1 style="margin: 0;">References</h1>
@@ -97,6 +110,7 @@
   
   <script src="hotness.js"></script>
   <script src="nav_style.js"></script>
+  <script src="style.js"></script>
   <script src="visualization.js"></script>
   <script src="chart_visualization.js"></script>
 </html>

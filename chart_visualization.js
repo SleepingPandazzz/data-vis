@@ -2997,7 +2997,6 @@ const us_prices = [
  ]
 
 async function initChart() {
-  // us_prices = await d3.csv("/us_price_history.csv");
   build_us_prices_with_date_and_value(us_prices);
 
   var margin = { top: 10, right: 30, bottom: 30, left: 60 },

@@ -114,23 +114,27 @@ function render(date) {
       d3.select(this).style("cursor", "pointer").style("stroke", "black");
       let data = hotness_by_date.find(hotness => hotness.feature.id == i.id);
       if (data) {
-        let tooltip = d3.select('#tooltip');
-        tooltip.classed("hidden", false)
-              .style("left", d.clientX + "px")
-              .style("top", d.clientY + "px");
+        // let tooltip = d3.select('#tooltip');
+        // tooltip.classed("hidden", false)
+        //       .style("left", d.clientX + "px")
+        //       .style("top", d.clientY + "px");
 
-        let county_row = '<tr><td>County: </td><td>' + capitialize(data.county_name.split(', ')[0]) + '</td></tr>';
-        let state_row = '<tr><td>State: </td><td>' + (data.county_name.split(', ')[1]).toUpperCase() + '</td></tr>';
-        let price_row = '<tr><td>Median Price: </td><td>' + moneyFormat(data.median_listing_price) + '</td></tr>';
-        tooltip.select("#tooltip-body").html(county_row + state_row + price_row);
+        // let county_row = '<tr><td>County: </td><td>' + capitialize(data.county_name.split(', ')[0]) + '</td></tr>';
+        // let state_row = '<tr><td>State: </td><td>' + (data.county_name.split(', ')[1]).toUpperCase() + '</td></tr>';
+        // let price_row = '<tr><td>Median Price: </td><td>' + moneyFormat(data.median_listing_price) + '</td></tr>';
+        // tooltip.select("#tooltip-body").html(county_row + state_row + price_row);
+        document.getElementById('info-table').style.display='table';
+        document.getElementById('county-info').innerHTML = capitialize(data.county_name.split(', ')[0]);
+        document.getElementById('state-info').innerHTML = (data.county_name.split(', ')[1]).toUpperCase();
+        document.getElementById('price-info').innerHTML = moneyFormat(data.median_listing_price);
       } else {
-        tooltip.select("text").text("No data available")
+        // tooltip.select("text").text("No data available")
       }
    })
    .on("mouseleave", function(d) {
       d3.select(this).style("cursor", "pointer").style("stroke", "gray");
-      d3.select("#tooltip").classed("hidden", true);
-   });
+      // d3.select("#tooltip").classed("hidden", true);
+   })
 
   let slider = document.getElementById('date');
   let current_date = document.getElementById('current-date');
