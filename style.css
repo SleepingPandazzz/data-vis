@@ -35,9 +35,7 @@ body {
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  min-height: 960px;
-  /* max-height: 1000px; */
-  /* background: lightblue; */
+  min-height: 1000px;
 }
 
 #section-3 {
@@ -46,8 +44,7 @@ body {
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  min-height: 1000px;
-  /* background: #fff5ba; */
+  min-height: 1100px;
 }
 
 #section-4 {

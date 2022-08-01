@@ -52,6 +52,9 @@
           <svg id="map-svg"></svg>
         </div>
         <div class="right">
+          <div class="box arrow-up">
+            Hover your mouse over the county on the map to view additional information in the right table.
+          </div>
           <table id="info-table">
             <tr>
               <th style="min-width: 80px">County</th>
@@ -69,21 +72,33 @@
           </div>
           <svg id="pie-svg"></svg>
           <div id="color-display">
-            <div class="color-container">
-              <div class="color-box" style="background-color: #69b764;" data-label="map"></div><span>< 300K</span>
-            </div>
-            <div class="color-container">
-              <div class="color-box" style="background-color: #ffd94a;" data-label="pie-chart"></div><span>300K ~ 500K</span>
-            </div>
-            <div class="color-container">
-              <div class="color-box" style="background-color: pink;" data-label="pie-chart"></div><span>500K ~ 800K</span>
-            </div>
-            <div class="color-container">
-              <div class="color-box" style="background-color: #f26c64;"></div><span>> 800K</span>
-            </div>
+            <table>
+              <tr>
+                <tr>
+                  <td><div class="color-box" style="background-color: #69b764;" data-label="map"></div></td>
+                  <td style="min-width: 100px;">< 300K</td>
+                  <td>Count: <span id="count-1"></span></td>
+                </tr>
+                <tr>
+                  <td><div class="color-box" style="background-color: #ffd94a;" data-label="map"></div></td>
+                  <td style="min-width: 100px;">300K ~ 500K</td>
+                  <td>Count: <span id="count-2"></span></td>
+                </tr>
+                <tr>
+                  <td><div class="color-box" style="background-color: pink;" data-label="map"></div></td>
+                  <td style="min-width: 100px;">500K ~ 800K</td>
+                  <td>Count: <span id="count-3"></span></td>
+                </tr>
+                <tr>
+                  <td><div class="color-box" style="background-color: #f26c64;" data-label="map"></div></td>
+                  <td style="min-width: 100px;"> 800K</td>
+                  <td>Count: <span id="count-4"></span></td>
+                </tr>
+              </tr>
+            </table>
           </div>
           <div class="box arrow-top">
-            Each color represents a different pricing range.
+            Each hue represents a distinct price range, and each number indicates the total number of counties that fall inside that price range.
           </div>
         </div>
       </div>

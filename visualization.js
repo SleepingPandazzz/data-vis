@@ -89,11 +89,8 @@ function render(date) {
               .attr("height", 650)
               .append("g");
 
-  const projection = d3.geoAlbersUsa().scale(1300).translate([500, 325]);
   const geo_path = d3.geoPath();
 
-  const min_date = 201708;
-  const max_date = 202206;
   hotness_by_date = buildStateHotnessByDate(grouped_hotness, counties_topojson, date);
 
   max_price = Math.max(...hotness_by_date.map(hotness => hotness.median_listing_price));
@@ -157,6 +154,12 @@ function render(date) {
   var range_2_count = getCountOfHousePriceRange(hotness_by_date, 300000, 500000);
   var range_3_count = getCountOfHousePriceRange(hotness_by_date, 500000, 800000);
   var range_4_count = hotness_by_date.length - range_1_count - range_2_count;
+
+  document.getElementById('count-1').innerHTML = range_1_count;
+  document.getElementById('count-2').innerHTML = range_2_count;
+  document.getElementById('count-3').innerHTML = range_3_count;
+  document.getElementById('count-4').innerHTML = range_4_count;
+
   var pie_data = [range_1_count, range_2_count, range_3_count, range_4_count];
     
   var pieColor = d3.scaleOrdinal(color_range);
